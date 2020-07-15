@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core.apps.CoreConfig',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'taggit',
 ]
 
@@ -125,7 +127,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 #gmail
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'Planelles.luis@gmail.com'
-EMAIL_HOST_PASSWORD = 'Gus@r@p0'
+EMAIL_HOST_USER = 'xxxx'
+EMAIL_HOST_PASSWORD = 'xxxx'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
