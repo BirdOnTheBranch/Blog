@@ -4,12 +4,15 @@
     <head>
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     </head>
     <body>
-    <div class="container-fluid">
-        <div class="row">
-                <div class="col-sm-3">
-                    <div id="sidebar">
+        <style>.date{color:grey}#sidebar{ color: grey; margin-right: 5px;}
+        </style>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3" >
+                    <div class="col-8" id="sidebar">
                         <br>
                         <h2>My blog</h2>
                         <br>
@@ -29,9 +32,11 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div id="content">
-                        {% block content %}
-                        {% endblock %}
+                    <div class="col-11">
+                        <div id="content">
+                            {% block content %}
+                            {% endblock %}
+                        </div>
                     </div>
                 </div>
             </div>

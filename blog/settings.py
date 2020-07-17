@@ -25,7 +25,7 @@ SECRET_KEY = 'nk=p$)&x#&^k62_h+$exxbd5vp5^9v7ugry4u2n1thdk2lgh37'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -37,11 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     'core.apps.CoreConfig',
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'taggit',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,10 +81,14 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+'default': {
+'ENGINE': 'django.db.backends.postgresql_psycopg2',
+'NAME': 'blog',
+'USER': 'name',
+'PASSWORD': 'password',
+'HOST': '127.0.0.1',
+'PORT': '',
+}
 }
 
 
@@ -122,6 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

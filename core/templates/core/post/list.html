@@ -10,6 +10,7 @@
         {% if tag %}
             <h4>Post tagged with "{{ tag.name }}"</h4>
         {% endif %}
+        <br>
         {% for post in posts %}
         <h4>
             <a href=" {{ post.get_absolute_url}} ">{{post.slug|title}}</a>
