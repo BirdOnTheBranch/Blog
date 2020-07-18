@@ -36,7 +36,7 @@ python manage.py runserver 0.0.0.0:8000
 
 &nbsp;
 ###### License:
-This project is licensed under the MIT License - see the LICENSE file for details
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/BirdOnTheBranch/blog/blob/master/LICENSE) file for details
 
 &nbsp;
 ###### Any questions or nice talk: [@wane_emece](https://twitter.com/WaneEmece).
