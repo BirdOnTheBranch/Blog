@@ -3,18 +3,15 @@
 {% block title %}Articles blog{% endblock%}
 
 {% block content %}
-
         <br>
         <h2>Articles blog</h2>
         <hr>
         {% if tag %}
             <h4>Post tagged with "{{ tag.name }}"</h4>
         {% endif %}
-        <br>
         {% for post in posts %}
-        <h4>
-            <a href=" {{ post.get_absolute_url}} ">{{post.slug|title}}</a>
-        </h4>
+        <h4><a href=" {{ post.get_absolute_url}} ">{{post.slug|title}}</a></h4>
+        <br>
         {{post.body|truncatewords:30|linebreaks}}
             <p class="date">
                 Published in {{ post.publish }} by {{ post.author }}
@@ -30,7 +27,7 @@
         </p>
         <hr>
         {% endfor %}
+        <br>
         {% include 'core/pagination.html' with page=posts %}
-
 {% endblock%}
 

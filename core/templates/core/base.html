@@ -14,7 +14,7 @@
                 <div class="col-sm-3" >
                     <div class="col-8" id="sidebar">
                         <br>
-                        <h2>My blog</h2>
+                        <a href="{% url "core:post_list"  %}"><h2>Home</h2></a>
                         <br>
                         <p>This is my blog. I've written {% total_posts %} posts so far.</p>
                         <p><a href="{% url "core:post_feed" %}">Subscribe to my RSS feed</a></p>
@@ -29,6 +29,8 @@
                             <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
                         {% endfor %}
                         </ul>
+                        <br>
+                        <p><a href="{% url "core:post_search" %}">Search matches</a></p>
                     </div>
                 </div>
                 <div class="col-sm-6">

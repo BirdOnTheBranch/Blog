@@ -1,23 +1,22 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from django.core.mail import send_mail
 from django.db.models import Count
 #Taggit
 from taggit.models import Tag
 
 from .models import Post
-from .forms import EmailPostForm, CommentForm
+from .forms import EmailPostForm, CommentForm, SearchForm
 
 
 
 def post_list(request, tag_slug=None):
-    object_list = Post.published.all()
+    object_list = Post.published.all().order_by('-created',)
     tag = None
-    
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
         object_list = object_list.filter(tags=tag.id)
-
     paginator = Paginator(object_list, 3) #3 post in each page.
     page = request.GET.get('page')
     try:
@@ -39,13 +38,11 @@ def post_detail(request, year, month, day, post):
                                    publish__year=year,
                                    publish__month=month,
                                    publish__day=day)
-
     # List of active comments for this post
     comments = post.comments.filter(active=True)
     if request.method == 'POST':
         # A comment was posted
         comment_form = CommentForm(data=request.POST)
-
         if comment_form.is_valid():
             # Create Comment object but don't save to database yet
             new_comment = comment_form.save(commit=False)
@@ -55,7 +52,6 @@ def post_detail(request, year, month, day, post):
             new_comment.save()
     else:
         comment_form = CommentForm()
-
     # List of similar posts
     post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
@@ -87,4 +83,21 @@ def post_share(request, post_id):
         form = EmailPostForm()
 
     return render(request, 'core/post/share.html', {'post': post, 'form': form, 'sent': sent})
- 
+
+
+
+def post_search(request):
+    form = SearchForm()
+    query = None 
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            search_vector = SearchVector('title', weight='A') + SearchVector('body', weight='B')
+            search_query = SearchQuery(query)  
+            results = Post.objects.annotate(
+                                            rank=SearchRank(search_vector, search_query)
+                                            ).filter(rank__gte=0.3).order_by('-rank')
+
+    return render(request, 'core/post/search.html', {'form':form, 'query': query, 'results':results})
