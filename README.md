@@ -28,11 +28,16 @@ In blog/
 pip install -r requirements.txt 
 python manage.py runserver 0.0.0.0:8000
 ```
+
 &nbsp;
 
 ###### Built with:
 [Python 3](https://www.python.org/download/releases/3.0/ "Python 3") - 3.8.3
 [Django 3](https://docs.djangoproject.com/en/3.0/ "Django 3") - 3.0.8
-&nbsp;
 
+&nbsp;
+###### License:
+This project is licensed under the MIT License - see the LICENSE file for details
+
+&nbsp;
 Any questions or nice talk: [@wane_emece](https://twitter.com/WaneEmece).
