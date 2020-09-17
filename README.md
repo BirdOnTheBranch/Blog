@@ -1,7 +1,7 @@
 &nbsp;
 # Articles-blog. 
 
-*This application is an articles blog, that incorporates a system to sends them by emails, and also add comments in them. Also It add tagging system for search them in trends or by similar tags, and create own tags for users.*
+*The application is an articles blog. It incorporates an email system to send them or add comments about them. It also incorporates a labeling system to search for trends, titles or similar content. Contains own labels for users, along with a mapping and site feed.*
 
 &nbsp;
 ###### Hi, human. The repo uses:
@@ -9,11 +9,11 @@
 ```
 Python 3.8.*
 Django 3.0.8
+PostgreeSQL 12 
+psycopg2-binary 2.8.5 
 Django-taggit 1.2.0
 Markdown 2.6.11
 Boostrap 4
-PostgreeSQL 12 
-psycopg2-binary 2.8.5 
 
 ```
 
@@ -28,11 +28,7 @@ In blog/
 pip install -r requirements.txt 
 python manage.py runserver 0.0.0.0:8000
 ```
-
-&nbsp;
-###### Built with:
-[Python 3](https://www.python.org/download/releases/3.0/ "Python 3") - 3.8.3
-[Django 3](https://docs.djangoproject.com/en/3.0/ "Django 3") - 3.0.8
+And use django admin to manage articles and the app.
 
 &nbsp;
 ###### License:
