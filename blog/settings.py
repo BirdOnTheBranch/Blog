@@ -81,14 +81,14 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': 'blog',
-'USER': 'name',
-'PASSWORD': 'password',
-'HOST': '127.0.0.1',
-'PORT': '',
-}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'blog',
+        'USER': 'name',
+        'PASSWORD': 'password',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+    }
 }
 
 
@@ -133,7 +133,7 @@ STATIC_URL = '/static/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#gmail
+# gmail
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'xxxx'
 EMAIL_HOST_PASSWORD = 'xxxx'

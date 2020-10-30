@@ -1,5 +1,6 @@
- 
+
 from django.contrib.sitemaps import Sitemap
+
 from .models import Post
 
 
@@ -12,4 +13,3 @@ class PostSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.publish
-        
